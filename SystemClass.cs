@@ -2,5 +2,7 @@ namespace App;
 
 class SystemClass
 {
-    public List<User> Users = new List<User>();
+    public List<IUser> Users = new List<IUser>();
+
+    
 }

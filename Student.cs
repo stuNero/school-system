@@ -2,11 +2,13 @@ namespace App;
 
 class Student : User, IUser
 {
-    public string? Name;
-    public Student(string? name, string? Username,string? password, string email)
-    : base(Username, password, email)
+
+    public Student(string name, string username, string email)
+    : base (name,username,email)
     {
         Name = name;
+        Username = username;
+        Email = email;
     }
     public bool TryLogin(string? username, string? password)
     {

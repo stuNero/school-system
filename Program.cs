@@ -10,10 +10,17 @@
 // Admins can create courses
 // ...
 
+using System.Reflection.Metadata;
 using App;
 SystemClass system = new SystemClass();
 IUser? active_user = null;
 Admin admin1 = new Admin(system, "saer001", "admin");
+
+admin1.CreateAccount("manuel.noltorp@nbi-handelsakademin.se");
+admin1.CreateAccount("max.ekstedt@nbi-handelsakademin.se");
+admin1.CreateAccount("max.vemic@student.nbi-handelsakademin.se");
+admin1.CreateAccount("amir.hamza@student.nbi-handelsakademin.se");
+
 bool running = true;
 
 while (running)
@@ -44,16 +51,24 @@ while (running)
                 }
                 break;
             case 2:
+                foreach (User user in system.Users)
+                {
+                    Console.WriteLine(user.Info());
+                    Console.ReadLine();
+                }
                 break;
             case 3:
+                Console.WriteLine("För att kontot ska kunna aktiveras \nmåste skolan ha registrerat dig som\n användare. \n\nAnge din e-postadress nedan.");
+                Console.Write("E-postadress: ");
+                string? email = Console.ReadLine();
                 break;
             case 4:
                 running = false;
                 break;
             default:
+                Utility.Error("Något gick fel");
                 break;
         }
-
     }
     else
     {
