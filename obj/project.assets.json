@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\maxve\\OneDrive\\Undervisning\\NBI-Handelsakademin\\OOP\\school_system\\school_system.csproj",
+      "projectUniqueName": "C:\\Users\\maxve\\repos\\school_system\\school_system.csproj",
       "projectName": "school_system",
-      "projectPath": "C:\\Users\\maxve\\OneDrive\\Undervisning\\NBI-Handelsakademin\\OOP\\school_system\\school_system.csproj",
+      "projectPath": "C:\\Users\\maxve\\repos\\school_system\\school_system.csproj",
       "packagesPath": "C:\\Users\\maxve\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\maxve\\OneDrive\\Undervisning\\NBI-Handelsakademin\\OOP\\school_system\\obj\\",
+      "outputPath": "C:\\Users\\maxve\\repos\\school_system\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\maxve\\AppData\\Roaming\\NuGet\\NuGet.Config"

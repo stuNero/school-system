@@ -11,13 +11,9 @@
 // ...
 
 using App;
-
-List<IUser> users = new List<IUser>();
-users.Add(new Student("max", "mave002", "pass", "max.vemic@hotmail.com"));
-users.Add(new Teacher("manuel", "pass", "manuel.nortorp@hotmai.com"));
-users.Add(new Admin("saer001", "sara.eriksson@hotmail.com"));
+SystemClass system = new SystemClass();
 IUser? active_user = null;
-
+Admin admin1 = new Admin(system, "saer001", "admin");
 bool running = true;
 
 while (running)
@@ -25,22 +21,39 @@ while (running)
     Console.Clear();
     if (active_user == null)
     {
-        Console.Write("Username: ");
-        string username = Console.ReadLine();
-        Console.Clear();
+        Utility.GenerateMenu(title: " ", choices: new[] { "Logga in", "Glömt lösenord eller användarnamn?", "Aktivera konto", "Avsluta" });
 
-        Console.Write("Password: ");
-        string password = Console.ReadLine();
-        Console.Clear();
-
-        foreach (IUser user in users)
+        int.TryParse(Console.ReadLine(), out int input);
+        switch (input)
         {
-            if (user.TryLogin(username, password))
-            {
-                active_user = user;
+            case 1:
+                Console.Write("Username: ");
+                string? username = Console.ReadLine();
+                Console.Clear();
+                
+                Console.Write("Password: ");
+                string? password = Console.ReadLine();
+                Console.Clear();
+                foreach (IUser user in system.Users)
+                {
+                    if (user.TryLogin(username, password))
+                    {
+                        active_user = user;
+                        break;
+                    }
+                }
                 break;
-            }
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                running = false;
+                break;
+            default:
+                break;
         }
+
     }
     else
     {
