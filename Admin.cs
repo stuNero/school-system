@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.Globalization;
 
 namespace App;
@@ -38,6 +39,32 @@ class Admin : IUser
         catch
         {
             Utility.Error("Error when creating account");
+        }
+    }
+    public void ActivateAccount(string email)
+    {
+        string TryPassword()
+        {
+            Console.Write("Password: ");
+            string password = Console.ReadLine();
+            Console.Write("Confirm Password:");
+            string passwordConfirm = Console.ReadLine();
+            if (password != passwordConfirm)
+            {
+                Console.WriteLine("Password");
+                return TryPassword();
+            }
+            return password;
+        }
+        foreach (User user in Sys)
+        {
+            if (email == user.Email)
+            {
+                Console.WriteLine("Create a password for your account");
+                string password = TryPassword();
+                user.SetPassword(password);
+                break;
+            }
         }
     }
     public bool TryLogin(string? username, string? password)

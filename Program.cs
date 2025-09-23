@@ -35,7 +35,7 @@ while (running)
         int.TryParse(Console.ReadLine(), out int input);
         switch (input)
         {
-            case 1:
+            case 1:   // Log in
                 Console.Write("Username: ");
                 string? username = Console.ReadLine();
                 Console.Clear();
@@ -52,19 +52,20 @@ while (running)
                     }
                 }
                 break;
-            case 2:
+            case 2:     // Forgot password
                 foreach (User user in users)
                 {
                     Console.WriteLine(user.Info());
                     Console.ReadLine();
                 }
                 break;
-            case 3:
+            case 3:     // Aktivera konto
                 Console.WriteLine("För att kontot ska kunna aktiveras \nmåste skolan ha registrerat dig som\n användare. \n\nAnge din e-postadress nedan.");
                 Console.Write("E-postadress: ");
                 string? email = Console.ReadLine();
+                admin1.ActivateAccount(email);
                 break;
-            case 4:
+            case 4:     // Quit
                 running = false;
                 break;
             default:

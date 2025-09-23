@@ -3,7 +3,7 @@ using Microsoft.VisualBasic;
 
 namespace App;
 
-class User
+abstract class User
 {
     public string Name;
     public string Username;
@@ -18,9 +18,14 @@ class User
     public virtual string Info()
     {
         string txt = "";
-        txt += $"\nNamn:         {Name}\n"+
-                 $"Användarnamn: {Username}\n"+
+        txt += $"\nNamn:         {Name}\n" +
+                 $"Användarnamn: {Username}\n" +
                  $"Email:        {Email}";
         return txt;
+    }
+    public void SetPassword(string password)
+    {
+        _password = password;
+        Utility.Success("Password Creation Success!");
     }
 }

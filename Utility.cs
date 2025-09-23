@@ -19,6 +19,7 @@ class Utility
     }
     public static void Error(string msg)
     {
+
         Console.ForegroundColor = ConsoleColor.DarkRed;
         Console.WriteLine(msg);
         Console.ResetColor();
@@ -26,5 +27,12 @@ class Utility
     public static void Prompt(string input)
     {
         Console.WriteLine(input + "\n(Skriv 'Exit' för att lämna..)");
+    }
+    public static void Success(string msg)
+    {
+        Console.ForegroundColor = ConsoleColor.DarkGreen;
+        Console.WriteLine(msg);
+        Console.ResetColor();
+        Thread.Sleep(2000);
     }
 }
