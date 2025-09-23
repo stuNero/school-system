@@ -45,13 +45,13 @@ class Admin : IUser
     {
         string TryPassword()
         {
-            Console.Write("Password: ");
+            Console.Write("Lösenord: ");
             string password = Console.ReadLine();
-            Console.Write("Confirm Password:");
+            Console.Write("Bekräfta lösenord:");
             string passwordConfirm = Console.ReadLine();
             if (password != passwordConfirm)
             {
-                Console.WriteLine("Password");
+                Utility.Error("Lösenorden är inte likadana\nProva igen...");
                 return TryPassword();
             }
             return password;
@@ -60,7 +60,7 @@ class Admin : IUser
         {
             if (email == user.Email)
             {
-                Console.WriteLine("Create a password for your account");
+                Console.WriteLine("Skapa ett lösenord för ditt konto.");
                 string password = TryPassword();
                 user.SetPassword(password);
                 break;

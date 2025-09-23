@@ -23,6 +23,7 @@ class Utility
         Console.ForegroundColor = ConsoleColor.DarkRed;
         Console.WriteLine(msg);
         Console.ResetColor();
+        Console.ReadLine();
     }
     public static void Prompt(string input)
     {

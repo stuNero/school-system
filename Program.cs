@@ -10,6 +10,7 @@
 // Admins can create courses
 // ...
 
+using System.CodeDom.Compiler;
 using System.Reflection.Metadata;
 using App;
 List<IUser> users = new List<IUser>();
@@ -75,8 +76,9 @@ while (running)
     }
     else
     {
+        Utility.GenerateMenu();
         Console.WriteLine("School system");
-
+        
         if (active_user is Teacher t)
         {
             Console.WriteLine("Welcome Teacher " + t.Username);

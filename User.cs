@@ -26,6 +26,6 @@ abstract class User
     public void SetPassword(string password)
     {
         _password = password;
-        Utility.Success("Password Creation Success!");
+        Utility.Success("Lösenord skapades!");
     }
 }
