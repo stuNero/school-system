@@ -12,9 +12,11 @@
 
 using System.Reflection.Metadata;
 using App;
-SystemClass system = new SystemClass();
+List<IUser> users = new List<IUser>();
+
 IUser? active_user = null;
-Admin admin1 = new Admin(system, "saer001", "admin");
+
+Admin admin1 = new Admin(users, "saer001", "admin");
 
 admin1.CreateAccount("manuel.noltorp@nbi-handelsakademin.se");
 admin1.CreateAccount("max.ekstedt@nbi-handelsakademin.se");
@@ -41,7 +43,7 @@ while (running)
                 Console.Write("Password: ");
                 string? password = Console.ReadLine();
                 Console.Clear();
-                foreach (IUser user in system.Users)
+                foreach (IUser user in users)
                 {
                     if (user.TryLogin(username, password))
                     {
@@ -51,7 +53,7 @@ while (running)
                 }
                 break;
             case 2:
-                foreach (User user in system.Users)
+                foreach (User user in users)
                 {
                     Console.WriteLine(user.Info());
                     Console.ReadLine();

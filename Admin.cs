@@ -6,9 +6,9 @@ class Admin : IUser
 {
     public string Username;
     string _password;
-    SystemClass Sys;
+    List<IUser> Sys;
 
-    public Admin(SystemClass sys, string username, string password)
+    public Admin(List<IUser> sys, string username, string password)
     {
         Sys = sys;
         Username = username;
@@ -19,17 +19,20 @@ class Admin : IUser
         try
         {
             TextInfo textInfo = CultureInfo.CurrentCulture.TextInfo;
+            
             string[] emailSplit = email.Split("@");
             string[] nameSplit = emailSplit[0].Split(".");
+            
             string username = $"1joy.{nameSplit[0]}.{nameSplit[1]}";
             string name = textInfo.ToTitleCase($"{nameSplit[0]} {nameSplit[1]}");
+
             if (emailSplit[1].ToLower() != "student.nbi-handelsakademin.se")
             {
-                Sys.Users.Add(new Teacher(name, username, email));
+                Sys.Add(new Teacher(name, username, email));
             }
             else
             {
-                Sys.Users.Add(new Student(name, username, email));
+                Sys.Add(new Student(name, username, email));
             }
         }
         catch
