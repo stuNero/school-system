@@ -14,8 +14,4 @@ class Student : User, IUser
     {
         return Username == username && password == _password;
     }
-    public void GenerateMenu()
-    {
-        Utility.GenerateMenu(title: "Välkommen till Learnpoint", choices: new[]{"Se kurser","Min inkorg","Min profil","Logga ut"});
-    }
 }

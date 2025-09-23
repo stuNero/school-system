@@ -20,10 +20,10 @@ class Admin : IUser
         try
         {
             TextInfo textInfo = CultureInfo.CurrentCulture.TextInfo;
-            
+
             string[] emailSplit = email.Split("@");
             string[] nameSplit = emailSplit[0].Split(".");
-            
+
             string username = $"1joy.{nameSplit[0]}.{nameSplit[1]}";
             string name = textInfo.ToTitleCase($"{nameSplit[0]} {nameSplit[1]}");
 

@@ -13,5 +13,8 @@ class Teacher : User, IUser
     {
         return Username == username && _password == password;
     }
-    
+    public void GenerateMenu(string title = "Menu", params string[] choices)
+    {
+
+    }
 }
