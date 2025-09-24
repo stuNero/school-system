@@ -89,6 +89,7 @@ while (running)
                     Utility.GenerateMenu(title: "Kurser", choices: new[] { "" });
                     break;
                 case 2: // Inkorg
+                    Console.WriteLine();
                     break;
                 case 3: // Min profil
                     break;
