@@ -1,8 +1,5 @@
 ﻿// Recreate learnpoint in the terminal
 
-// Logga in, logga ut
-// Students, Teachers, Admin
-// Admin can create new accounts
 // Upload documents
 // Create schedules with events
 // Teachers can grade exams
@@ -35,7 +32,6 @@ while (running)
     {
         Utility.GenerateMenu(title: " ", choices: new[] { "Logga in", "Glömt lösenord eller användarnamn?",
                                                           "Aktivera konto", "Avsluta" });
-
         int.TryParse(Console.ReadLine(), out int input);
         switch (input)
         {
@@ -97,6 +93,7 @@ while (running)
                 case 3: // Min profil
                     break;
                 case 4: // Logga ut
+                    active_user = null;
                     break;
                 default:
                     Utility.Error("Something went wrong");
