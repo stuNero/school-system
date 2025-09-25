@@ -33,14 +33,19 @@ class Utility
     {
         Console.WriteLine(input + "\n(Skriv 'Exit' för att lämna..)");
     }
-    public static void Success(string msg)
+    public static void Success(string msg, bool menuChoice = true)
     {
+
         Console.ForegroundColor = ConsoleColor.DarkGreen;
         Console.WriteLine(msg);
         Console.ResetColor();
-        Console.ForegroundColor = ConsoleColor.DarkGray;
-        Console.WriteLine("Återgår till menyn...");
-        Console.ResetColor();
-        Thread.Sleep(2000);
+        if (menuChoice)
+        {
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("'ENTER' för att återgå till menyn...");
+            Console.ResetColor();
+            Console.ReadLine();
+        }
+        Thread.Sleep(1000);
     }
 }

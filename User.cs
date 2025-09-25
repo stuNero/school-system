@@ -15,17 +15,21 @@ abstract class User
         Username = username;
         Email = email;
     }
-    public virtual string Info()
+    public virtual string Info(bool inclPassword = false)
     {
         string txt = "";
         txt += $"\nNamn:         {Name}\n" +
                  $"Användarnamn: {Username}\n" +
-                 $"Email:        {Email}";
+                 $"Email:        {Email}\n";
+        if (inclPassword)
+        {
+        txt +=   $"Lösenord:     {_password}";
+        }
         return txt;
     }
     public void SetPassword(string password)
     {
         _password = password;
-        Utility.Success("Lösenord skapades!");
+        Utility.Success("Lösenord skapades!",false);
     }
 }
