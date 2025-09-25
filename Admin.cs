@@ -1,15 +1,16 @@
 using System.ComponentModel;
 using System.Globalization;
 using System.Diagnostics;
+using System.Reflection.Metadata;
 namespace App;
 
 class Admin : IUser
 {
     public string Username;
     string _password;
-    List<IUser> Sys;
+    SystemClass Sys;
 
-    public Admin(List<IUser> sys, string username, string password)
+    public Admin(SystemClass sys, string username, string password)
     {
         Sys = sys;
         Username = username;
@@ -29,11 +30,11 @@ class Admin : IUser
 
             if (emailSplit[1].ToLower() != "student.nbi-handelsakademin.se")
                 {
-                    Sys.Add(new Teacher(name, username, email));
+                    Sys.users.Add(new Teacher(name, username, email));
                 }
                 else
                 {
-                    Sys.Add(new Student(name, username, email));
+                    Sys.users.Add(new Student(name, username, email));
                 }
         }
         catch
@@ -44,7 +45,7 @@ class Admin : IUser
     public void ActivateAccount(string email)
     {
         bool check = false;
-        foreach (User user in Sys)
+        foreach (User user in Sys.users)
         {
             if (user.Email == email)
             {
@@ -69,17 +70,29 @@ class Admin : IUser
             }
             return password;
         }
-        foreach (User user in Sys)
+        foreach (User user in Sys.users)
         {
             if (email == user.Email)
             {
-                
+
                 Console.WriteLine("Skapa ett lösenord för ditt konto.");
                 string password = TryPassword();
                 user.SetPassword(password);
+                Utility.Success($"Aktivering av ditt konto lyckades!\n"
+                            + "Dina kontouppgifter:"
+                            + $"\n{user.Info(inclPassword:true)}");
                 break;
             }
         }
+    }
+    public void CourseRegister(string course, User user)
+    {
+        if (!Sys.attendeesByCourse.ContainsKey(course))
+        {
+            Utility.Error($"Kursen '{course}' finns ej");
+            return;
+        }
+        Sys.attendeesByCourse[course].Add(user);
     }
     public bool TryLogin(string? username, string? password)
     {
