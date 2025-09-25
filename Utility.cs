@@ -23,7 +23,11 @@ class Utility
         Console.ForegroundColor = ConsoleColor.DarkRed;
         Console.WriteLine(msg);
         Console.ResetColor();
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.WriteLine("'ENTER' för att återgå till menyn...");
+        Console.ResetColor();
         Console.ReadLine();
+        Console.Clear();
     }
     public static void Prompt(string input)
     {
@@ -33,6 +37,9 @@ class Utility
     {
         Console.ForegroundColor = ConsoleColor.DarkGreen;
         Console.WriteLine(msg);
+        Console.ResetColor();
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.WriteLine("Återgår till menyn...");
         Console.ResetColor();
         Thread.Sleep(2000);
     }

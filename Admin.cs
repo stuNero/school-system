@@ -1,6 +1,6 @@
 using System.ComponentModel;
 using System.Globalization;
-
+using System.Diagnostics;
 namespace App;
 
 class Admin : IUser
@@ -28,13 +28,13 @@ class Admin : IUser
             string name = textInfo.ToTitleCase($"{nameSplit[0]} {nameSplit[1]}");
 
             if (emailSplit[1].ToLower() != "student.nbi-handelsakademin.se")
-            {
-                Sys.Add(new Teacher(name, username, email));
-            }
-            else
-            {
-                Sys.Add(new Student(name, username, email));
-            }
+                {
+                    Sys.Add(new Teacher(name, username, email));
+                }
+                else
+                {
+                    Sys.Add(new Student(name, username, email));
+                }
         }
         catch
         {
@@ -43,6 +43,19 @@ class Admin : IUser
     }
     public void ActivateAccount(string email)
     {
+        bool check = false;
+        foreach (User user in Sys)
+        {
+            if (user.Email == email)
+            {
+                check = true;
+            }
+        }
+        if (!check)
+        {
+            Utility.Error($"Email: -{email}- fanns inte i systemet\nKontakta admin för support...");
+            return;
+        }
         string TryPassword()
         {
             Console.Write("Lösenord: ");
@@ -60,6 +73,7 @@ class Admin : IUser
         {
             if (email == user.Email)
             {
+                
                 Console.WriteLine("Skapa ett lösenord för ditt konto.");
                 string password = TryPassword();
                 user.SetPassword(password);
