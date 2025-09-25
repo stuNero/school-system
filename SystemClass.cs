@@ -5,7 +5,7 @@ class SystemClass
     public List<User> users = new List<User>();
     public Dictionary<string, List<User>> attendeesByCourse = new Dictionary<string, List<User>>();
 
-    public List<string> CheckCourses(User user)
+    public List<string> GatherCourses(User user)
     {
         List<string> courseList = new List<string>();
         foreach ((string course, List<User> users1) in attendeesByCourse)
