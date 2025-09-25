@@ -4,6 +4,8 @@ class Course
 {
     public string Name;
     public List<Assignment> AssignmentList = new List<Assignment>();
+    public List<Student> students = new List<Student>();
+    public List<Teacher> teachers = new List<Teacher>();
 
     public Course(string name)
     {
@@ -28,6 +30,20 @@ class Course
             {
                 AssignmentList.Remove(ass);
             }
+        }
+    }
+    public void AddUser(User user)
+    {
+        if (!students.Contains(user) || !teachers.Contains(user))
+        {
+            if (user is Teacher t)
+                {
+                    teachers.Add(t);
+                }
+                else if (user is Student s)
+                {
+                    students.Add(s);
+                }
         }
     }
 }
