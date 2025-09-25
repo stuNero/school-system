@@ -9,7 +9,6 @@ abstract class User
     public string Username;
     protected string _password;
     public string Email;
-    List<string> courseList = new List<string>();
 
     public User(string name, string username, string email)
     {
@@ -33,21 +32,5 @@ abstract class User
     {
         _password = password;
         Utility.Success("Lösenord skapades!", false);
-    }
-    public void CheckCourses(List<string> CheckCourseList)
-    {
-        void UpdateCourses(List<string> UpdateCourseList)
-        {
-            courseList.Clear();
-            foreach (string course in UpdateCourseList)
-            {
-                courseList.Add(course);
-            }
-        }
-        if (CheckCourseList.Count != 0)
-        {
-            UpdateCourses(CheckCourseList);
-            Utility.GenerateMenu(title: "Kurser", choices: courseList.ToArray());
-        }
     }
 }

@@ -16,170 +16,146 @@ SystemClass system = new SystemClass();
 IUser? active_user = null;
 Admin admin1 = new Admin(system, "saer001", "admin");
 
-Dictionary<string, List<IUser>> attendeesByCourse = new Dictionary<string, List<IUser>>();
+// Courses 
+admin1.CreateCourse("Introduktion till mjukvaruutveckling"); // courses[0]
+admin1.CreateCourse("Objekotorienterad programmering"); // courses[1]
+admin1.CreateCourse("Datadrivna applikationer"); // courses[2]
+admin1.CreateCourse("Databaser och informationsstrukturer"); // courses[3]
+admin1.CreateCourse("Agil utvecklingskultur"); // courses[4]
+admin1.CreateCourse("Test, integration och leverans"); // courses[5]
+admin1.CreateCourse("Artificiell intelligens - programmering python"); // courses[6]
+admin1.CreateCourse("Artificiell intelligens - teori och tillämpning, del 1"); // courses[7]
+admin1.CreateCourse("Artificiell intelligens - teori och tillämpning, del 2"); // courses[8]
+admin1.CreateCourse("Lärande i arbete (LIA 1)"); // courses[9]
+admin1.CreateCourse("Lärande i arbete (LIA 2)");
+admin1.CreateCourse("Examensarbete");
+
+// Teachers 
+admin1.CreateAccount("linus.lindroth@nbi-handelsakademin.se"); // users[0]  // Teacher 1joy.linus.lindroth 
+admin1.CreateAccount("manuel.noltorp@nbi-handelsakademin.se"); // users[1] Teacher 1joy.manuel.noltorp 
+admin1.CreateAccount("max.ekstedt@nbi-handelsakademin.se"); // users[2] Teacher 1joy.max.ekstedt 
+admin1.CreateAccount("sara.andersson@nbi-handelsakademin.se"); // users[3] Teacher 1joy.sara.andersson 
+admin1.CreateAccount("johan.nilsson@nbi-handelsakademin.se"); // users[4] Teacher 1joy.johan.nilsson 
+admin1.CreateAccount("anna.eriksson@nbi-handelsakademin.se"); // users[5] Teacher 1joy.anna.eriksson 
+admin1.CreateAccount("mats.karlsson@nbi-handelsakademin.se"); // users[6] Teacher 1joy.mats.karlsson 
+admin1.CreateAccount("eva.svensson@nbi-handelsakademin.se"); // users[7] Teacher 1joy.eva.svensson 
+admin1.CreateAccount("per.johansson@nbi-handelsakademin.se"); // users[8] Teacher 1joy.per.johansson 
+admin1.CreateAccount("lisa.persson@nbi-handelsakademin.se"); // users[9] Teacher 1joy.lisa.persson 
+
+// Students 
+admin1.CreateAccount("max.vemic@student.nbi-handelsakademin.se"); // users[12] Student 1joy.max.vemic 
+admin1.CreateAccount("amir.hamza@student.nbi-handelsakademin.se"); // users[13] Student 1joy.amir.hamza 
+admin1.CreateAccount("emma.svensson@student.nbi-handelsakademin.se"); // users[14] Student 1joy.emma.svensson 
+admin1.CreateAccount("oliver.johansson@student.nbi-handelsakademin.se");// users[15] Student 1joy.oliver.johansson 
+admin1.CreateAccount("elvira.nilsson@student.nbi-handelsakademin.se"); // users[16] Student 1joy.elvira.nilsson 
+admin1.CreateAccount("lucas.persson@student.nbi-handelsakademin.se"); // users[17] Student 1joy.lucas.persson 
+admin1.CreateAccount("agnes.larsson@student.nbi-handelsakademin.se"); // users[18] Student 1joy.agnes.larsson 
+admin1.CreateAccount("isak.eriksson@student.nbi-handelsakademin.se"); // users[19] Student 1joy.isak.eriksson 
+admin1.CreateAccount("alva.karlsson@student.nbi-handelsakademin.se"); // users[20] Student 1joy.alva.karlsson 
+admin1.CreateAccount("leo.gustafsson@student.nbi-handelsakademin.se"); // users[21] Student 1joy.leo.gustafsson 
+admin1.CreateAccount("molly.olsson@student.nbi-handelsakademin.se"); // users[22] Student 1joy.molly.olsson 
+admin1.CreateAccount("vincent.axelsson@student.nbi-handelsakademin.se");// users[23] Student 1joy.vincent.axelsson 
+admin1.CreateAccount("wilma.sundberg@student.nbi-handelsakademin.se"); // users[24] Student 1joy.wilma.sundberg 
+admin1.CreateAccount("anton.lindberg@student.nbi-handelsakademin.se"); // users[25] Student 1joy.anton.lindberg 
+admin1.CreateAccount("julia.holm@student.nbi-handelsakademin.se"); // users[26] Student 1joy.julia.holm 
+admin1.CreateAccount("theo.bjork@student.nbi-handelsakademin.se"); // users[27] Student 1joy.theo.bjork
 
 // Teachers
-admin1.CreateAccount("linus.lindroth@nbi-handelsakademin.se");      // users[0]  Teacher  1joy.linus.lindroth
-admin1.CreateAccount("manuel.noltorp@nbi-handelsakademin.se");      // users[1]  Teacher  1joy.manuel.noltorp
-admin1.CreateAccount("max.ekstedt@nbi-handelsakademin.se");         // users[2]  Teacher  1joy.max.ekstedt
-admin1.CreateAccount("sara.andersson@nbi-handelsakademin.se");      // users[3]  Teacher  1joy.sara.andersson
-admin1.CreateAccount("johan.nilsson@nbi-handelsakademin.se");       // users[4]  Teacher  1joy.johan.nilsson
-admin1.CreateAccount("anna.eriksson@nbi-handelsakademin.se");       // users[5]  Teacher  1joy.anna.eriksson
-admin1.CreateAccount("mats.karlsson@nbi-handelsakademin.se");       // users[6]  Teacher  1joy.mats.karlsson
-admin1.CreateAccount("eva.svensson@nbi-handelsakademin.se");        // users[7]  Teacher  1joy.eva.svensson
-admin1.CreateAccount("per.johansson@nbi-handelsakademin.se");       // users[8]  Teacher  1joy.per.johansson
-admin1.CreateAccount("lisa.persson@nbi-handelsakademin.se");        // users[9]  Teacher  1joy.lisa.persson
-admin1.CreateAccount("anders.larsson@nbi-handelsakademin.se");      // users[10] Teacher  1joy.anders.larsson
-admin1.CreateAccount("sofie.gustafsson@nbi-handelsakademin.se");    // users[11] Teacher  1joy.sofie.gustafsson
+admin1.CourseRegister("Introduktion till mjukvaruutveckling", "1joy.linus.lindroth");
+admin1.CourseRegister("Objekotorienterad programmering", "1joy.manuel.noltorp");
+admin1.CourseRegister("Datadrivna applikationer", "1joy.manuel.noltorp");
+admin1.CourseRegister("Objekotorienterad programmering", "1joy.max.ekstedt");
+admin1.CourseRegister("Datadrivna applikationer", "1joy.max.ekstedt");
+admin1.CourseRegister("Databaser och informationsstrukturer", "1joy.sara.andersson");
+admin1.CourseRegister("Agil utvecklingskultur", "1joy.johan.nilsson");
+admin1.CourseRegister("Test, integration och leverans", "1joy.anna.eriksson");
+admin1.CourseRegister("Artificiell intelligens - programmering python", "1joy.mats.karlsson");
+admin1.CourseRegister("Artificiell intelligens - teori och tillämpning, del 1", "1joy.eva.svensson");
+admin1.CourseRegister("Artificiell intelligens - teori och tillämpning, del 2", "1joy.per.johansson");
+admin1.CourseRegister("Lärande i arbete (LIA 1)", "1joy.lisa.persson");
+admin1.CourseRegister("Lärande i arbete (LIA 2)", "1joy.lisa.persson");
+admin1.CourseRegister("Examensarbete", "1joy.lisa.persson");
 
-// Students
-admin1.CreateAccount("max.vemic@student.nbi-handelsakademin.se");       //  users[12]  Student  1joy.max.vemic
-admin1.CreateAccount("amir.hamza@student.nbi-handelsakademin.se");      //  users[13]  Student  1joy.amir.hamza
-admin1.CreateAccount("emma.svensson@student.nbi-handelsakademin.se");   //  users[14]  Student  1joy.emma.svensson
-admin1.CreateAccount("oliver.johansson@student.nbi-handelsakademin.se");//  users[15]  Student  1joy.oliver.johansson
-admin1.CreateAccount("elvira.nilsson@student.nbi-handelsakademin.se");  //  users[16]  Student  1joy.elvira.nilsson
-admin1.CreateAccount("lucas.persson@student.nbi-handelsakademin.se");   //  users[17]  Student  1joy.lucas.persson
-admin1.CreateAccount("agnes.larsson@student.nbi-handelsakademin.se");   //  users[18]  Student  1joy.agnes.larsson
-admin1.CreateAccount("isak.eriksson@student.nbi-handelsakademin.se");   //  users[19]  Student  1joy.isak.eriksson
-admin1.CreateAccount("alva.karlsson@student.nbi-handelsakademin.se");   //  users[20]  Student  1joy.alva.karlsson
-admin1.CreateAccount("leo.gustafsson@student.nbi-handelsakademin.se");  //  users[21]  Student  1joy.leo.gustafsson
-admin1.CreateAccount("molly.olsson@student.nbi-handelsakademin.se");    //  users[22]  Student  1joy.molly.olsson
-admin1.CreateAccount("vincent.axelsson@student.nbi-handelsakademin.se");//  users[23]  Student  1joy.vincent.axelsson
-admin1.CreateAccount("wilma.sundberg@student.nbi-handelsakademin.se");  //  users[24]  Student  1joy.wilma.sundberg
-admin1.CreateAccount("anton.lindberg@student.nbi-handelsakademin.se");  //  users[25]  Student  1joy.anton.lindberg
-admin1.CreateAccount("julia.holm@student.nbi-handelsakademin.se");      //  users[26]  Student  1joy.julia.holm
-admin1.CreateAccount("theo.bjork@student.nbi-handelsakademin.se");      //  users[27]  Student  1joy.theo.bjork
+// Students (4 courses each, distributed)
+admin1.CourseRegister("Introduktion till mjukvaruutveckling", "1joy.max.vemic");
+admin1.CourseRegister("Objekotorienterad programmering", "1joy.max.vemic");
+admin1.CourseRegister("Datadrivna applikationer", "1joy.max.vemic");
+admin1.CourseRegister("Databaser och informationsstrukturer", "1joy.max.vemic");
 
+admin1.CourseRegister("Agil utvecklingskultur", "1joy.amir.hamza");
+admin1.CourseRegister("Test, integration och leverans", "1joy.amir.hamza");
+admin1.CourseRegister("Artificiell intelligens - programmering python", "1joy.amir.hamza");
+admin1.CourseRegister("Artificiell intelligens - teori och tillämpning, del 1", "1joy.amir.hamza");
 
-system.attendeesByCourse.Add("Introduktion till mjukvaruutveckling", new List<User>());
-system.attendeesByCourse.Add("Objekotorienterad programmering", new List<User>());
-system.attendeesByCourse.Add("Datadrivna applikationer", new List<User>());
-system.attendeesByCourse.Add("Databaser och informationsstrukturer", new List<User>());
-system.attendeesByCourse.Add("Agil utvecklingskultur", new List<User>());
-system.attendeesByCourse.Add("Test, integration och leverans", new List<User>());
-system.attendeesByCourse.Add("Artificiell intelligens - programmering python", new List<User>());
-system.attendeesByCourse.Add("Artificiell intelligens - teori och tillämpning, del 1", new List<User>());
-system.attendeesByCourse.Add("Artificiell intelligens - teori och tillämpning, del 2", new List<User>());
-system.attendeesByCourse.Add("Lärande i arbete (LIA 1)", new List<User>());
-system.attendeesByCourse.Add("Lärande i arbete (LIA 2)", new List<User>());
-system.attendeesByCourse.Add("Examensarbete", new List<User>());
+admin1.CourseRegister("Artificiell intelligens - teori och tillämpning, del 2", "1joy.emma.svensson");
+admin1.CourseRegister("Lärande i arbete (LIA 1)", "1joy.emma.svensson");
+admin1.CourseRegister("Lärande i arbete (LIA 2)", "1joy.emma.svensson");
+admin1.CourseRegister("Examensarbete", "1joy.emma.svensson");
 
+admin1.CourseRegister("Introduktion till mjukvaruutveckling", "1joy.oliver.johansson");
+admin1.CourseRegister("Objekotorienterad programmering", "1joy.oliver.johansson");
+admin1.CourseRegister("Datadrivna applikationer", "1joy.oliver.johansson");
+admin1.CourseRegister("Databaser och informationsstrukturer", "1joy.oliver.johansson");
 
-// Introduktion till mjukvaruutveckling
-admin1.CourseRegister("Introduktion till mjukvaruutveckling", system.users[0]);
-admin1.CourseRegister("Introduktion till mjukvaruutveckling", system.users[3]);
-admin1.CourseRegister("Introduktion till mjukvaruutveckling", system.users[12]);
-admin1.CourseRegister("Introduktion till mjukvaruutveckling", system.users[14]);
-admin1.CourseRegister("Introduktion till mjukvaruutveckling", system.users[16]);
-admin1.CourseRegister("Introduktion till mjukvaruutveckling", system.users[18]);
-admin1.CourseRegister("Introduktion till mjukvaruutveckling", system.users[21]);
+admin1.CourseRegister("Agil utvecklingskultur", "1joy.elvira.nilsson");
+admin1.CourseRegister("Test, integration och leverans", "1joy.elvira.nilsson");
+admin1.CourseRegister("Artificiell intelligens - programmering python", "1joy.elvira.nilsson");
+admin1.CourseRegister("Artificiell intelligens - teori och tillämpning, del 1", "1joy.elvira.nilsson");
 
-// Objekotorienterad programmering
-admin1.CourseRegister("Objekotorienterad programmering", system.users[1]);
-admin1.CourseRegister("Objekotorienterad programmering", system.users[4]);
-admin1.CourseRegister("Objekotorienterad programmering", system.users[13]);
-admin1.CourseRegister("Objekotorienterad programmering", system.users[15]);
-admin1.CourseRegister("Objekotorienterad programmering", system.users[19]);
-admin1.CourseRegister("Objekotorienterad programmering", system.users[22]);
-admin1.CourseRegister("Objekotorienterad programmering", system.users[25]);
+admin1.CourseRegister("Artificiell intelligens - teori och tillämpning, del 2", "1joy.lucas.persson");
+admin1.CourseRegister("Lärande i arbete (LIA 1)", "1joy.lucas.persson");
+admin1.CourseRegister("Lärande i arbete (LIA 2)", "1joy.lucas.persson");
+admin1.CourseRegister("Examensarbete", "1joy.lucas.persson");
 
-// Datadrivna applikationer
-admin1.CourseRegister("Datadrivna applikationer", system.users[2]);
-admin1.CourseRegister("Datadrivna applikationer", system.users[7]);
-admin1.CourseRegister("Datadrivna applikationer", system.users[12]);
-admin1.CourseRegister("Datadrivna applikationer", system.users[17]);
-admin1.CourseRegister("Datadrivna applikationer", system.users[20]);
-admin1.CourseRegister("Datadrivna applikationer", system.users[23]);
-admin1.CourseRegister("Datadrivna applikationer", system.users[26]);
+admin1.CourseRegister("Introduktion till mjukvaruutveckling", "1joy.agnes.larsson");
+admin1.CourseRegister("Objekotorienterad programmering", "1joy.agnes.larsson");
+admin1.CourseRegister("Datadrivna applikationer", "1joy.agnes.larsson");
+admin1.CourseRegister("Databaser och informationsstrukturer", "1joy.agnes.larsson");
 
-// Databaser och informationsstrukturer
-admin1.CourseRegister("Databaser och informationsstrukturer", system.users[5]);
-admin1.CourseRegister("Databaser och informationsstrukturer", system.users[9]);
-admin1.CourseRegister("Databaser och informationsstrukturer", system.users[13]);
-admin1.CourseRegister("Databaser och informationsstrukturer", system.users[16]);
-admin1.CourseRegister("Databaser och informationsstrukturer", system.users[19]);
-admin1.CourseRegister("Databaser och informationsstrukturer", system.users[24]);
-admin1.CourseRegister("Databaser och informationsstrukturer", system.users[27]);
+admin1.CourseRegister("Agil utvecklingskultur", "1joy.isak.eriksson");
+admin1.CourseRegister("Test, integration och leverans", "1joy.isak.eriksson");
+admin1.CourseRegister("Artificiell intelligens - programmering python", "1joy.isak.eriksson");
+admin1.CourseRegister("Artificiell intelligens - teori och tillämpning, del 1", "1joy.isak.eriksson");
 
-// Agil utvecklingskultur
-admin1.CourseRegister("Agil utvecklingskultur", system.users[6]);
-admin1.CourseRegister("Agil utvecklingskultur", system.users[10]);
-admin1.CourseRegister("Agil utvecklingskultur", system.users[12]);
-admin1.CourseRegister("Agil utvecklingskultur", system.users[14]);
-admin1.CourseRegister("Agil utvecklingskultur", system.users[18]);
-admin1.CourseRegister("Agil utvecklingskultur", system.users[22]);
-admin1.CourseRegister("Agil utvecklingskultur", system.users[25]);
+admin1.CourseRegister("Artificiell intelligens - teori och tillämpning, del 2", "1joy.alva.karlsson");
+admin1.CourseRegister("Lärande i arbete (LIA 1)", "1joy.alva.karlsson");
+admin1.CourseRegister("Lärande i arbete (LIA 2)", "1joy.alva.karlsson");
+admin1.CourseRegister("Examensarbete", "1joy.alva.karlsson");
 
-// Test, integration och leverans
-admin1.CourseRegister("Test, integration och leverans", system.users[8]);
-admin1.CourseRegister("Test, integration och leverans", system.users[11]);
-admin1.CourseRegister("Test, integration och leverans", system.users[15]);
-admin1.CourseRegister("Test, integration och leverans", system.users[17]);
-admin1.CourseRegister("Test, integration och leverans", system.users[20]);
-admin1.CourseRegister("Test, integration och leverans", system.users[23]);
-admin1.CourseRegister("Test, integration och leverans", system.users[26]);
+admin1.CourseRegister("Introduktion till mjukvaruutveckling", "1joy.leo.gustafsson");
+admin1.CourseRegister("Objekotorienterad programmering", "1joy.leo.gustafsson");
+admin1.CourseRegister("Datadrivna applikationer", "1joy.leo.gustafsson");
+admin1.CourseRegister("Databaser och informationsstrukturer", "1joy.leo.gustafsson");
 
-// Artificiell intelligens - teori och tillämpning, del 1
-admin1.CourseRegister("Artificiell intelligens - teori och tillämpning, del 1", system.users[0]);
-admin1.CourseRegister("Artificiell intelligens - teori och tillämpning, del 1", system.users[7]);
-admin1.CourseRegister("Artificiell intelligens - teori och tillämpning, del 1", system.users[13]);
-admin1.CourseRegister("Artificiell intelligens - teori och tillämpning, del 1", system.users[18]);
-admin1.CourseRegister("Artificiell intelligens - teori och tillämpning, del 1", system.users[21]);
-admin1.CourseRegister("Artificiell intelligens - teori och tillämpning, del 1", system.users[24]);
+admin1.CourseRegister("Agil utvecklingskultur", "1joy.molly.olsson");
+admin1.CourseRegister("Test, integration och leverans", "1joy.molly.olsson");
+admin1.CourseRegister("Artificiell intelligens - programmering python", "1joy.molly.olsson");
+admin1.CourseRegister("Artificiell intelligens - teori och tillämpning, del 1", "1joy.molly.olsson");
 
-// Artificiell intelligens - teori och tillämpning, del 2
-admin1.CourseRegister("Artificiell intelligens - teori och tillämpning, del 2", system.users[1]);
-admin1.CourseRegister("Artificiell intelligens - teori och tillämpning, del 2", system.users[6]);
-admin1.CourseRegister("Artificiell intelligens - teori och tillämpning, del 2", system.users[14]);
-admin1.CourseRegister("Artificiell intelligens - teori och tillämpning, del 2", system.users[19]);
-admin1.CourseRegister("Artificiell intelligens - teori och tillämpning, del 2", system.users[22]);
-admin1.CourseRegister("Artificiell intelligens - teori och tillämpning, del 2", system.users[27]);
+admin1.CourseRegister("Artificiell intelligens - teori och tillämpning, del 2", "1joy.vincent.axelsson");
+admin1.CourseRegister("Lärande i arbete (LIA 1)", "1joy.vincent.axelsson");
+admin1.CourseRegister("Lärande i arbete (LIA 2)", "1joy.vincent.axelsson");
+admin1.CourseRegister("Examensarbete", "1joy.vincent.axelsson");
 
-// Artificiell intelligens - programmering python
-admin1.CourseRegister("Artificiell intelligens - programmering python", system.users[2]);
-admin1.CourseRegister("Artificiell intelligens - programmering python", system.users[9]);
-admin1.CourseRegister("Artificiell intelligens - programmering python", system.users[15]);
-admin1.CourseRegister("Artificiell intelligens - programmering python", system.users[20]);
-admin1.CourseRegister("Artificiell intelligens - programmering python", system.users[23]);
-admin1.CourseRegister("Artificiell intelligens - programmering python", system.users[25]);
+admin1.CourseRegister("Introduktion till mjukvaruutveckling", "1joy.wilma.sundberg");
+admin1.CourseRegister("Objekotorienterad programmering", "1joy.wilma.sundberg");
+admin1.CourseRegister("Datadrivna applikationer", "1joy.wilma.sundberg");
+admin1.CourseRegister("Databaser och informationsstrukturer", "1joy.wilma.sundberg");
 
-// Lärande i arbete (LIA 1)
-admin1.CourseRegister("Lärande i arbete (LIA 1)", system.users[3]);
-admin1.CourseRegister("Lärande i arbete (LIA 1)", system.users[8]);
-admin1.CourseRegister("Lärande i arbete (LIA 1)", system.users[12]);
-admin1.CourseRegister("Lärande i arbete (LIA 1)", system.users[16]);
-admin1.CourseRegister("Lärande i arbete (LIA 1)", system.users[21]);
-admin1.CourseRegister("Lärande i arbete (LIA 1)", system.users[26]);
+admin1.CourseRegister("Agil utvecklingskultur", "1joy.anton.lindberg");
+admin1.CourseRegister("Test, integration och leverans", "1joy.anton.lindberg");
+admin1.CourseRegister("Artificiell intelligens - programmering python", "1joy.anton.lindberg");
+admin1.CourseRegister("Artificiell intelligens - teori och tillämpning, del 1", "1joy.anton.lindberg");
 
-// Lärande i arbete (LIA 2)
-admin1.CourseRegister("Lärande i arbete (LIA 2)", system.users[4]);
-admin1.CourseRegister("Lärande i arbete (LIA 2)", system.users[10]);
-admin1.CourseRegister("Lärande i arbete (LIA 2)", system.users[13]);
-admin1.CourseRegister("Lärande i arbete (LIA 2)", system.users[17]);
-admin1.CourseRegister("Lärande i arbete (LIA 2)", system.users[22]);
-admin1.CourseRegister("Lärande i arbete (LIA 2)", system.users[27]);
+admin1.CourseRegister("Artificiell intelligens - teori och tillämpning, del 2", "1joy.julia.holm");
+admin1.CourseRegister("Lärande i arbete (LIA 1)", "1joy.julia.holm");
+admin1.CourseRegister("Lärande i arbete (LIA 2)", "1joy.julia.holm");
+admin1.CourseRegister("Examensarbete", "1joy.julia.holm");
 
-// Examensarbete
-admin1.CourseRegister("Examensarbete", system.users[5]);
-admin1.CourseRegister("Examensarbete", system.users[11]);
-admin1.CourseRegister("Examensarbete", system.users[14]);
-admin1.CourseRegister("Examensarbete", system.users[18]);
-admin1.CourseRegister("Examensarbete", system.users[20]);
-admin1.CourseRegister("Examensarbete", system.users[24]);
-admin1.CourseRegister("Examensarbete", system.users[25]);
-
-// attendeesByCourse["Introduktion till mjukvaruutveckling"] = new List<IUser> { users[0], users[3], users[12], users[14], users[16], users[18], users[21] };
-// attendeesByCourse["Objekotorienterad programmering"]      = new List<IUser> { users[1], users[4], users[13], users[15], users[19], users[22], users[25] };
-// attendeesByCourse["Datadrivna applikationer"]             = new List<IUser> { users[2], users[7], users[12], users[17], users[20], users[23], users[26] };
-// attendeesByCourse["Databaser och informationsstrukturer"] = new List<IUser> { users[5], users[9], users[13], users[16], users[19], users[24], users[27] };
-// attendeesByCourse["Agil utvecklingskultur"]               = new List<IUser> { users[6], users[10], users[12], users[14], users[18], users[22], users[25] };
-// attendeesByCourse["Test, integration och leverans"]       = new List<IUser> { users[8], users[11], users[15], users[17], users[20], users[23], users[26] };
-// attendeesByCourse["Artificiell intelligens - teori och tillämpning, del 1"] = new List<IUser> { users[0], users[7], users[13], users[18], users[21], users[24] };
-// attendeesByCourse["Artificiell intelligens - teori och tillämpning, del 2"] = new List<IUser> { users[1], users[6], users[14], users[19], users[22], users[27] };
-// attendeesByCourse["Artificell intelligens - programmering python"]          = new List<IUser> { users[2], users[9], users[15], users[20], users[23], users[25] };
-// attendeesByCourse["Lärande i arbete (LIA 1)"] = new List<IUser> { users[3], users[8], users[12], users[16], users[21], users[26] };
-// attendeesByCourse["Lärande i arbete (LIA 2)"] = new List<IUser> { users[4], users[10], users[13], users[17], users[22], users[27] };
-// attendeesByCourse["Examensarbete"]            = new List<IUser> { users[5], users[11], users[14], users[18], users[20], users[24], users[25] };
+admin1.CourseRegister("Introduktion till mjukvaruutveckling", "1joy.theo.bjork");
+admin1.CourseRegister("Objekotorienterad programmering", "1joy.theo.bjork");
+admin1.CourseRegister("Datadrivna applikationer", "1joy.theo.bjork");
+admin1.CourseRegister("Databaser och informationsstrukturer", "1joy.theo.bjork");
 
 bool running = true;
 
@@ -244,7 +220,7 @@ while (running)
             switch (input)
             {
                 case 1: // kurser
-                    Utility.GenerateMenu(title: "Dina Kurser", choices: new[] { "" });
+
                     break;
                 case 2: // Inkorg
                     Console.WriteLine("Inkorg");
@@ -272,12 +248,18 @@ while (running)
             {
                 case 1: // kurser
                     Console.Clear();
-                    List<string> courseList = system.CheckCourses(s);
+                    List<Course> coursesByUser = system.GatherCourses(s);
+                    List<string> courseNames = new List<string>();
+                    foreach (Course course in coursesByUser)
+                    {
+                        courseNames.Add(course.Name);
+                    }
+                    Utility.GenerateMenu(title: "[Kurser]", choices: courseNames.ToArray());
                     Console.ReadLine();
                     break;
                 case 2: // Inkorg
                     Console.Clear();
-                    Console.WriteLine("Inkorg");
+                    Console.WriteLine("[Inkorg]");
                     Console.WriteLine("Exempelmeddelande 1\nExempelmeddelande 2\nExempelmeddelande 3");
                     Console.ReadLine();
                     break;

@@ -2,7 +2,7 @@ namespace App;
 
 class Student : User, IUser
 {
-
+    public Dictionary<Assignment, string> gradePerAssignment = new Dictionary<Assignment, string>(); 
     public Student(string name, string username, string email)
     : base(name, username, email)
     {

@@ -85,14 +85,33 @@ class Admin : IUser
             }
         }
     }
-    public void CourseRegister(string course, User user)
+    public void CourseRegister(string courseName, string username)
     {
-        if (!Sys.attendeesByCourse.ContainsKey(course))
+        foreach (Course course in Sys.courses)
         {
-            Utility.Error($"Kursen '{course}' finns ej");
-            return;
+            if (courseName.ToLower() == course.Name.ToLower())
+            {
+                foreach (User user in Sys.users)
+                {
+                    if (username.ToLower() == user.Username.ToLower())
+                    {
+                        if (course.students.Contains(user) || course.teachers.Contains(user))
+                        {
+                            Utility.Error($"Användare '{user.Username}' redan registrerad på kursen");
+                            return;    
+                        }
+                        if (user is Teacher t)
+                        {
+                            course.teachers.Add(t);
+                        }
+                        else if (user is Student s)
+                        {
+                            course.students.Add(s);
+                        }
+                    }
+                }
+            }
         }
-        Sys.attendeesByCourse[course].Add(user);
     }
     public bool TryLogin(string? username, string? password)
     {
@@ -100,7 +119,7 @@ class Admin : IUser
     }
     public void CreateCourse(string name)
     {
-        foreach (Course course in Sys.coursesClass)
+        foreach (Course course in Sys.courses)
         {
             if (course.Name.ToLower() == name.ToLower())
             {
@@ -108,6 +127,6 @@ class Admin : IUser
                 return;
             }
         }
-        Sys.coursesClass.Add(new Course(name));
+        Sys.courses.Add(new Course(name));
     }
 }

@@ -4,8 +4,8 @@ class Assignment
 {
     public string Name;
     public string Id;
-    public string Content;
-
+    string Content;
+    
     public Assignment(string name, string id)
     {
         Name = name;

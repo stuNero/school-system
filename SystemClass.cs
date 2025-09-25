@@ -3,25 +3,26 @@ namespace App;
 class SystemClass
 {
     public List<User> users = new List<User>();
-    public Dictionary<string, List<User>> attendeesByCourse = new Dictionary<string, List<User>>();
+    public List<Course> courses = new List<Course>();
 
-    public List<string> GatherCourses(User user)
+    public List<Course> GatherCourses(User user)
     {
-        List<string> courseList = new List<string>();
-        foreach ((string course, List<User> users1) in attendeesByCourse)
+        List<Course> coursesByUser = new List<Course>();
+        foreach (Course course in courses)
         {
-            foreach (User user1 in users1)
+            if (course.students.Contains(user) || course.teachers.Contains(user))
             {
-                if (user == user1)
-                {
-                    courseList.Add(course);
-                }
+                coursesByUser.Add(course);
             }
         }
-        if (courseList.Count == 0)
+        if (coursesByUser.Count == 0)
         {
             Utility.Error("Du är inte registrerad på några kurser");
+            return coursesByUser;
         }
-        return courseList;
+        else
+        {
+            return coursesByUser;
+        }
     }
 }
