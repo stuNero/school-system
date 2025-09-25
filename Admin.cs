@@ -29,13 +29,13 @@ class Admin : IUser
             string name = textInfo.ToTitleCase($"{nameSplit[0]} {nameSplit[1]}");
 
             if (emailSplit[1].ToLower() != "student.nbi-handelsakademin.se")
-                {
-                    Sys.users.Add(new Teacher(name, username, email));
-                }
-                else
-                {
-                    Sys.users.Add(new Student(name, username, email));
-                }
+            {
+                Sys.users.Add(new Teacher(name, username, email));
+            }
+            else
+            {
+                Sys.users.Add(new Student(name, username, email));
+            }
         }
         catch
         {
@@ -80,7 +80,7 @@ class Admin : IUser
                 user.SetPassword(password);
                 Utility.Success($"Aktivering av ditt konto lyckades!\n"
                             + "Dina kontouppgifter:"
-                            + $"\n{user.Info(inclPassword:true)}");
+                            + $"\n{user.Info(inclPassword: true)}");
                 break;
             }
         }
@@ -97,5 +97,17 @@ class Admin : IUser
     public bool TryLogin(string? username, string? password)
     {
         return Username == username && password == _password;
+    }
+    public void CreateCourse(string name)
+    {
+        foreach (Course course in Sys.coursesClass)
+        {
+            if (course.Name.ToLower() == name.ToLower())
+            {
+                Utility.Error($"Kursen '{name}' finns redan");
+                return;
+            }
+        }
+        Sys.coursesClass.Add(new Course(name));
     }
 }
